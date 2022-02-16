@@ -1,12 +1,11 @@
-import '../src/App.css'
 import Card from './components/Card';
-import '../src/styles/CardStyles';
+import {AppContainer} from '../src/styles/MainStyles';
 
 function App() {
   return (
-    <div className='App'>
+    <AppContainer>
       <Card/>
-    </div>
+    </AppContainer>
   );
 }
 
