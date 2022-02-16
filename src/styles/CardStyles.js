@@ -21,4 +21,23 @@ const HeaderNav = styled.div`
     margin-right: 10%;
 `
 
-export {GlassCard, Header, HeaderNav};
+const Input = styled.input`
+    height: 70px;
+    width: 100%;
+    font-size: 3em;
+
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px) saturate(80%);
+
+    border-radius: 10px;
+    border: none;
+
+    transition: .3s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.8);
+    }
+`
+
+
+export {GlassCard, Header, HeaderNav, Input};

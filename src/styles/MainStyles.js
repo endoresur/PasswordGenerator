@@ -10,8 +10,10 @@ const AppContainer = styled.div`
 `
 
 const Container = styled.div`
-    padding-right: 5%;
-    padding-left: 5%;    
+    position: relative;
+    align-items: center;
+    margin: 3% auto 3% auto;
+    width: 90%;
 `
 
 const FlexContainer = styled(Container)`
