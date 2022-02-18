@@ -12,17 +12,20 @@ const AppContainer = styled.div`
 const Container = styled.div`
     position: relative;
     align-items: center;
-    margin: 3% auto 3% auto;
-    width: 90%;
+    margin: ${props => props.m || '3% auto 3% auto'};
+    width: ${props => props.width || '90%'};
+    height: ${props => props.height || ''};
 `
 
 const FlexContainer = styled(Container)`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${props => props.dir || ''};
 `
 
 const GridContainer = styled(Container)`
-
+    display: grid;
+    grid-template-columns: ${props => props.cols || ''};
+    grid-template-rows: ${props => props.rows || ''}; 
 `
 
 export {AppContainer, Container, FlexContainer, GridContainer};
