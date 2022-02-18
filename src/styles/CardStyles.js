@@ -18,12 +18,13 @@ const Header = styled.div`
 
 const HeaderNav = styled.div`
     height: 100%;
-    margin-right: 10%;
+    margin-right: 7%;
 `
 
 const Input = styled.input`
     height: 70px;
-    width: 100%;
+    width: ${props => props.width || '20%'};
+    margin: ${props => props.m || ''};
     font-size: 3em;
 
     background: rgba(255, 255, 255, 0.4);
@@ -31,6 +32,7 @@ const Input = styled.input`
 
     border-radius: 10px;
     border: none;
+    shadow: none;
 
     transition: .3s;
 
