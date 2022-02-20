@@ -22,7 +22,8 @@ const HeaderNav = styled.div`
 `
 
 const Input = styled.input`
-    height: 70px;
+    height: ${props => props.height || '70px'};
+    //height: 70px;
     width: ${props => props.width || '20%'};
     margin: ${props => props.m || ''};
     font-size: 3em;
