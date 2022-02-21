@@ -15,6 +15,7 @@ const Container = styled.div`
     margin: ${props => props.m || '3% auto 3% auto'};
     width: ${props => props.width || '90%'};
     height: ${props => props.height || ''};
+    font-size: ${props => props.fs || ''};
 `
 
 const FlexContainer = styled(Container)`

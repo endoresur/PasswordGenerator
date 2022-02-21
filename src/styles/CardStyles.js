@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 const GlassCard = styled.div`
-    height: 80%;
+    height: 90vh;
     width: 70%;
 
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px) saturate(80%);
     border-radius: 15px;
+
+    overflow-x: auto;
 `
 
 const Header = styled.div`
@@ -23,7 +25,6 @@ const HeaderNav = styled.div`
 
 const Input = styled.input`
     height: ${props => props.height || '70px'};
-    //height: 70px;
     width: ${props => props.width || '20%'};
     margin: ${props => props.m || ''};
     font-size: 3em;
@@ -42,5 +43,4 @@ const Input = styled.input`
     }
 `
 
-
-export {GlassCard, Header, HeaderNav, Input};
+export { GlassCard, Header, HeaderNav, Input };

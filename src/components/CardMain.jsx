@@ -1,5 +1,6 @@
 import React from "react";
 import { Input } from "../styles/CardStyles";
+import { Switch } from "../styles/SwitchStyle";
 import { Container, FlexContainer, GridContainer } from "../styles/MainStyles";
 
 const choices = [
@@ -12,74 +13,66 @@ const settings = [
     { id: 1, item: 'Uppercase' },
     { id: 2, item: 'Lowercase' },
     { id: 3, item: 'Numbers' },
-    { id: 3, item: 'Symbols' }
+    { id: 4, item: 'Symbols' }
 ];
+
+//    overflow-x: auto;
 
 const CardMain = () => {
 
     return (
-        <>
-            <Container >
-                <div>
+        <Container m='0' width='100%'>
+            <Container>
                     <Input width={'100%'} type='text' defaultValue="ygnNHGh" />
-                </div>
+            </Container>
+            <Container>
+                <h2>Customize your password</h2>
             </Container>
 
-            <form>
                 <Container>
-                    <h2>Customize your password</h2>
+                    <Container width='100%' m={'0 0 -3% 0'}>Password length</Container>
+                    <FlexContainer dir='colunms' m='0' width='100%'>
+                        <Input type="text" width={'15%'} m={'0 3% 0 0'} defaultValue='15' />
+                        <Input
+                            type="range"
+                            min="1"
+                            max="30"
+                            step="1"
+                            defaultValue='15'
+                            width={'100%'}
+                            m={'3% 0 3% 0'}
+                        />
+                    </FlexContainer>
                 </Container>
-                <GridContainer rows='1fr 1fr'>
 
-                    <Container m='0' width='100%'>
-                        <Container m='0' width='100%' m={'0 0 -5% 0'}>Password length</Container>
-                        <FlexContainer dir='colunms' m='0' width='100%'>
-                            <Input type="text" width={'15%'} m={'0 3% 0 0'} defaultValue='15' />
-                            <Input
-                                type="range"
-                                min="1"
-                                max="30"
-                                step="1"
-                                defaultValue='15'
-                                m={'0 3% 0 0'}
-                                width={'100%'}
-                                m={'5% 0 5% 0'}
-                            />
-                        </FlexContainer>
-                    </Container>
+                <FlexContainer fs='1.2em'>
+                    <GridContainer m='0' width='100%' cols='1fr 1fr'>
 
-                    <Container m='0' width='100%'>
-                        <GridContainer m='0' width='100%' cols='1fr 1fr'>
-
-                            <GridContainer dir='rows'>
-                                {choices.map(function (choice) {
-                                    return (
-                                        <FlexContainer m='auto' width='100%'>
-                                            <Input height='30px' width='30px' type="radio" id="contactChoice1"
-                                                name="contact" value="email" />
-                                            <label htmlFor="contactChoice1">{choice.item}</label>
-                                        </FlexContainer>
-                                    );
-                                })}
-                            </GridContainer>
-
-                            <GridContainer dir='rows'>
-                                {settings.map(function(setting) {
-                                    return (
-                                        <FlexContainer m='auto' width='100%'>
-                                            <Input height='30px' width='30px' type="checkbox" id="contactChoice1"
-                                                name="contact" value="email" />
-                                            <label htmlFor="contactChoice1">{setting.item}</label>
-                                        </FlexContainer>
-                                    );
-                                })}
-                            </GridContainer>
+                        <GridContainer dir='rows'>
+                            {choices.map(function (choice) {
+                                return (
+                                    <FlexContainer key={choice.id} m='10px 0 10px 0' width='100%'>
+                                        <input type='radio' name='choice' checked/>
+                                        <label>{choice.item}</label>
+                                    </FlexContainer>
+                                );
+                            })}
                         </GridContainer>
-                    </Container>
 
-                </GridContainer>
-            </form>
-        </>
+                        <GridContainer dir='rows'>
+                            {settings.map(function (setting) {
+                                return (
+                                    <FlexContainer key={setting.id} m='4px 0 4px 0' width='100%'>
+                                        <Switch />
+                                        <label>{setting.item}</label>
+                                    </FlexContainer>
+                                );
+                            })}
+                        </GridContainer>
+                    </GridContainer>
+                </FlexContainer>
+
+        </Container>
     );
 }
 

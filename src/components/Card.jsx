@@ -4,12 +4,14 @@ import CardHeader from "./CardHeader";
 import CardMain from "./CardMain";
 
 const Card = () => {
-    
-    return(
+
+    return (
         <GlassCard>
-            <CardHeader/>
-            <CardMain/>
-        </GlassCard>    
+            <div>
+                <CardHeader />
+                <CardMain />
+            </div>
+        </GlassCard>
     );
 }
 
