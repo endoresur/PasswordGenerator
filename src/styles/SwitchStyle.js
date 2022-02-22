@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const SwitchInputUI = styled.input.attrs({ type: "checkbox" })`
@@ -45,10 +45,19 @@ const SwitchUI = styled.label`
   }
 `
 
-const Switch = () => {
+const Switch = (props) => {
+
+  function checkOfChecked(flag) {
+    console.log(flag);
+    if (flag) {
+      return <SwitchInputUI defaultChecked/>
+    }
+    return <SwitchInputUI />
+  }
+  
   return (
-    <SwitchUI>
-      <SwitchInputUI />
+    <SwitchUI>      
+      {checkOfChecked(props.setting.checked)}
       <SwitchSliderUI />
     </SwitchUI>
   );
