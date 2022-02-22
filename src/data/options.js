@@ -5,11 +5,16 @@ const choices = [
     { id: 3, item: 'All characters', checked: true }
 ];
 
-const variation = [
+const variations = [
     { id: 1, item: 'Uppercase', checked: false },
     { id: 2, item: 'Lowercase', checked: true },
     { id: 3, item: 'Numbers', checked: false },
     { id: 4, item: 'Symbols', checked: true }
 ];
 
-export {choices as Choices, variation as Variation};
+const actions = {
+    setLength: 'SET_LENGTH',
+    setPassword: 'SET_PASSWORD',
+}
+
+export {choices as Choices, variations as Variations, actions};
