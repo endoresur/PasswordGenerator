@@ -12,7 +12,7 @@ const AppContainer = styled.div`
 const Container = styled.div`
     position: relative;
     align-items: center;
-    margin: ${props => props.m || '3% auto 3% auto'};
+    margin: ${props => props.m || '20px auto 20px auto'};
     width: ${props => props.width || '90%'};
     height: ${props => props.height || ''};
     font-size: ${props => props.fs || ''};

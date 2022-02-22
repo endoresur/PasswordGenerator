@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 const GlassCard = styled.div`
     height: 90vh;
+    min-height: 200px;
+    max-height: 600px;
     width: 70%;
+    min-width: 300px;
+    max-width: 900px;
 
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px) saturate(80%);
