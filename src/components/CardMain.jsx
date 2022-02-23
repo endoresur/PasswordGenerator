@@ -1,54 +1,60 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 import { Input } from "../styles/CardStyles";
 import { Switch } from "../styles/SwitchStyle";
 import { Container, FlexContainer, GridContainer } from "../styles/MainStyles";
-import { Choices, Variation } from "../data/options";
-import {uppercase, lowercase, numbers, symbols} from '../data/letters';
+import { actions, Choices, Variations } from "../data/options";
+import { generatePassword } from "./generator/Generator";
 
 const CardMain = () => {
 
-    const [settings, setSettings] = useState(Variation);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state);
+
+    const [settings, setSettings] = useState(Variations);
     const [choices, setChoices] = useState(Choices);
-    const [length, setLength] = useState(10);
-    const [password, setPassword] = useState('');
-
-    useEffect(() => {
-        generatePassword();
-    }, [length, settings, choices]);
-
-    const generatePassword = () => {
-        let alfabet = uppercase.concat(lowercase);
-        
-        let result = '';
-        for(let i = 0; i < length; i++) {
-            let char = alfabet[Math.floor(Math.random() * (alfabet.length - 1))]
-            result += char;
-        }
-        setPassword(result);
-    }
 
     function handleChangeChecked(index) {
         let elements = settings;
         elements[index].checked = !elements[index].checked;
         setSettings(elements);
-        console.log(settings[index]);
     }
 
     const handleChangeRange = (event) => {
         let value = event.target.value;
-        setLength(value);
-        console.log(length);
+        if (value > 30) value = 30;
+        dispatch({ type: actions.setLength, payload: value });
     }
+
+    useEffect(() => {
+        let password = generatePassword(state.length);
+        dispatch({ type: actions.setPassword, payload: password });
+
+    }, [state.length]);
+
+    console.log(state);
 
     return (
         <Container m='0' width='100%'>
             <Container>
-                <Input width={'100%'} type='text' defaultValue={password} />
+
+                <Input
+                    width={'100%'}
+                    type='text'
+                    value={state.password}
+                    onChange={(event) => {
+                        dispatch({
+                            type: actions.setPassword, payload: event.target.value
+                        })
+                    }}
+                />
             </Container>
+
             <Container>
                 <h2>Customize your password</h2>
             </Container>
-
             <Container>
                 <Container width='100%' m={'0 0 -3% 0'}>Password length</Container>
                 <FlexContainer dir='colunms' m='0' width='100%'>
@@ -56,7 +62,7 @@ const CardMain = () => {
                         type="text"
                         width={'55px'}
                         m={'0 3% 0 0'}
-                        value={length}
+                        value={state.length}
                         onChange={handleChangeRange}
                     />
                     <Input
@@ -64,7 +70,7 @@ const CardMain = () => {
                         min="1"
                         max="30"
                         step="1"
-                        value={length}
+                        value={state.length}
                         onChange={handleChangeRange}
                         width={'100%'}
                         m={'3% 0 3% 0'}
@@ -95,7 +101,7 @@ const CardMain = () => {
                                     width='100%'
                                     onChange={() => handleChangeChecked(index)}
                                 >
-                                    <Switch setting={setting}/>
+                                    <Switch setting={setting} />
                                     <label>{setting.item}</label>
                                 </FlexContainer>
                             );
