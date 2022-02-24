@@ -11,20 +11,20 @@ import PasswordCustomizer from "./control_elements/PasswordCustomizer";
 const CardMain = () => {
 
     const dispatch = useDispatch();
-    const state = useSelector(state => state);       
+    const state = useSelector(state => state);
 
     useEffect(() => {
         let password = generatePassword(state.length);
         dispatch({ type: actions.setPassword, payload: password });
-
-    }, [state.length]);
+        dispatch({ type: actions.updatePassword, payload: false });
+    }, [state.length, state.needUpdate]);
 
     console.log(state);
 
     return (
         <Container m='0' width='100%'>
-            <PasswordForm/>
-            <PasswordCustomizer/>    
+            <PasswordForm />
+            <PasswordCustomizer />
         </Container>
     );
 }

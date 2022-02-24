@@ -3,25 +3,39 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "../../data/options";
 import { Input } from "../../styles/CardStyles";
-import { Container } from "../../styles/MainStyles";
+import { Container, FlexContainer, IconContainer } from "../../styles/MainStyles";
+import RefreshIcon from "../icon_buttons/RefreshIcon";
 
 const PasswordForm = () => {
 
     const dispatch = useDispatch();
-    const password = useSelector(state => state.password);
+    const state = useSelector(state => state);
 
     return (
         <Container>
             <Input
                 width={'100%'}
                 type='text'
-                value={password}
+                value={state.password}
                 onChange={(event) => {
                     dispatch({
                         type: actions.setPassword, payload: event.target.value
                     })
                 }}
             />
+
+            <IconContainer >
+                <FlexContainer m='10px'>
+                    <div
+                        onClick={() => {
+                            dispatch({
+                                type: actions.updatePassword, payload: true
+                            })
+                        }} >
+                        <RefreshIcon />
+                    </div>
+                </FlexContainer>
+            </IconContainer>
         </Container>
     );
 }

@@ -29,4 +29,10 @@ const GridContainer = styled(Container)`
     grid-template-rows: ${props => props.rows || ''}; 
 `
 
-export {AppContainer, Container, FlexContainer, GridContainer};
+const IconContainer = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+`
+
+export { AppContainer, Container, FlexContainer, GridContainer, IconContainer };

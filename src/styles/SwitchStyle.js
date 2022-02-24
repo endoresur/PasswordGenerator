@@ -48,7 +48,6 @@ const SwitchUI = styled.label`
 const Switch = (props) => {
 
   function checkOfChecked(flag) {
-    console.log(flag);
     if (flag) {
       return <SwitchInputUI defaultChecked/>
     }
