@@ -1,13 +1,13 @@
 import React from "react";
 
-import icon from '../../assets/images/refresh.png'
+import icon from '../../assets/images/copy.png'
 
-const RefreshIcon = () => {
-    return (
+const CopyIcon = () => {
+    return(
         <div>
             <img src={icon} height='46px' width='46px' alt=''/>
         </div>
     );
 }
 
-export default RefreshIcon;
+export default CopyIcon;

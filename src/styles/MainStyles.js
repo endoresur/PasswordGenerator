@@ -33,6 +33,10 @@ const IconContainer = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(80%);
 `
 
 export { AppContainer, Container, FlexContainer, GridContainer, IconContainer };
