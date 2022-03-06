@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import styled from "styled-components";
 
 const SwitchInputUI = styled.input.attrs({ type: "checkbox" })`
@@ -47,19 +49,21 @@ const SwitchUI = styled.label`
 
 const Switch = (props) => {
 
-  function checkOfChecked(flag) {
-    if (flag) {
-      return <SwitchInputUI defaultChecked/>
+  const state = useSelector(state => state.variation);
+
+  function checkOfChecked(index) {
+    if (state[index].checked) {
+      return <SwitchInputUI defaultChecked />
     }
     return <SwitchInputUI />
   }
-  
+
   return (
-    <SwitchUI>      
-      {checkOfChecked(props.setting.checked)}
+    <SwitchUI key={props.setting.checked}>
+      {checkOfChecked(props.setting.id - 1)}
       <SwitchSliderUI />
     </SwitchUI>
   );
 }
 
-export {Switch};
+export { Switch };

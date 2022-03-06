@@ -17,6 +17,8 @@ const actions = {
     setPassword: 'SET_PASSWORD',
     updatePassword: 'UPDATE_PASSWORD',
     setChoice: 'UPDATE_CHOICE',
+    addVariation: 'ADD_VARIATION',
+    removeVariation: 'REMOVE_VARIATION', 
 }
 
 export {choices as Choices, variations as Variations, actions};

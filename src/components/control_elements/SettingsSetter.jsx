@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Variations } from "../../data/options";
 import { FlexContainer, GridContainer } from "../../styles/MainStyles";
 import { Switch } from "../../styles/SwitchStyle";
 
 const SettingsSetter = () => {
 
-    const [settings, setSettings] = useState(Variations);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state.variation);
 
+    const [settings, setSettings] = useState(state);
+    
     function handleChangeChecked(index) {
         let elements = settings;
         elements[index].checked = !elements[index].checked;
